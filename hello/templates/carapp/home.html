@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Домашня сторінка</title>
+    <link href="{% static  'css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+<menu>
+    <menuitem><a href="/about/">Про нас</a></menuitem>
+    <menuitem><a href="/contacts/">Контакти</a></menuitem>
+</menu>
+<h1>Домашня сторінка застосунку</h1>
+<h2>Подивіться який кіт</h2>
+<img src="{% static 'images/cat.jpg' %}" alt="cat">
+
+</body>
+</html>
