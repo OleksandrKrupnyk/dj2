@@ -2,20 +2,29 @@ from django.template.response import TemplateResponse
 from django.http import \
     HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect, HttpRequest
 from django.shortcuts import render
+from .forms import UserForm
 
 
 # Create your views here.
 def index(request: HttpRequest) -> object:
-    # return TemplateResponse(request, "carapp\\home.html")
-    cat = [
-        {"title":"Ноутбуки", "link":"/#"},
-        {"title":"Монітори", "link":"/#"},
-        {"title":"Клавіатури", "link":"/#"},
-        {"title":"Мишки", "link":"/#"},
-        {"title":"Підставки", "link":"/#"},
-           ]
-    data = {"cat":cat}
-    return render(request, "carapp\\index.html", context=data)
+    if request.method == "POST":
+        name = request.POST.get("name")
+        age = request.POST.get("age")
+        output = "<h2>Користувач</h2><br/> {0} віком {1}".format(name, age)
+        return HttpResponse(output)
+    else:
+        # return TemplateResponse(request, "carapp\\home.html")
+        cat = [
+            {"title": "Ноутбуки", "link": "/#"},
+            {"title": "Монітори", "link": "/#"},
+            {"title": "Клавіатури", "link": "/#"},
+            {"title": "Мишки", "link": "/#"},
+            {"title": "Підставки", "link": "/#"},
+        ]
+        userform = UserForm()
+        data = {"cat": cat, "form": userform}
+
+        return render(request, "carapp\\index.html", context=data)
     # header = "Персональні дані" #Звичайна змінна
     # langs = ["Англійська","Німецька","Іспанська"], #масив
     # user = {"name":"Ярослав","age":26} # словник
