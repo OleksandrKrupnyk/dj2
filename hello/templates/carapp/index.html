@@ -1,0 +1,13 @@
+{% extends 'carapp/base.html' %}
+{% block title %}Головна сторінка{% endblock title %}
+{% block header %}Головна сторінка{% endblock header %}
+{% block content %}
+    Вміст головної сторінки
+    <ul>
+        {% for prod in cat %}
+            <li><a href="{{ prod.link }}">{{ prod.title }}</a></li>
+        {% empty %}
+            <p>Категорії продуктів відсутні</p>
+        {% endfor %}
+    </ul>
+{% endblock content %}

@@ -1,12 +1,21 @@
 from django.template.response import TemplateResponse
 from django.http import \
     HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect, HttpRequest
-#from django.shortcuts import render
+from django.shortcuts import render
 
 
 # Create your views here.
 def index(request: HttpRequest) -> object:
-    return TemplateResponse(request, "carapp\\home.html")
+    # return TemplateResponse(request, "carapp\\home.html")
+    cat = [
+        {"title":"Ноутбуки", "link":"/#"},
+        {"title":"Монітори", "link":"/#"},
+        {"title":"Клавіатури", "link":"/#"},
+        {"title":"Мишки", "link":"/#"},
+        {"title":"Підставки", "link":"/#"},
+           ]
+    data = {"cat":cat}
+    return render(request, "carapp\\index.html", context=data)
     # header = "Персональні дані" #Звичайна змінна
     # langs = ["Англійська","Німецька","Іспанська"], #масив
     # user = {"name":"Ярослав","age":26} # словник

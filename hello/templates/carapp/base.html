@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ua">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Заголовок{% endblock title %}</title>
+    <link href="{% static  'css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+<menu>
+    <menuitem><a href="/">Головна</a></menuitem>
+    <menuitem><a href="/about/">Про нас</a></menuitem>
+    <menuitem><a href="/contacts/">Контакти</a></menuitem>
+</menu>
+<h1>{% block header %}{% endblock %}</h1>
+<div>{% block content %}{% endblock content %}</div>
+<div>{% now "Y-m-d H:i:s" %}</div>
+</body>
+</html>
